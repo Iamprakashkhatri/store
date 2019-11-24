@@ -1,0 +1,28 @@
+{%if user.is_authenticated%}
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Username</th>
+</tr>
+</thead>
+<tbody>
+{% for i in object_list %}
+<tr>
+<td>{{ i.name }}</td>
+<td>{{ i.user.username}}</td>
+<td>
+<a  href="{{ i.get_absolute_url_detail }}">details</a>
+<a  href="{{ i.get_absolute_url_update }}">edit</a>
+<a  href="{{ i.get_absolute_url_delete }}">delete</a>
+
+</td>
+</tr>
+
+{% endfor %}
+<a class="button is-info" href="{% url 'stor:index' %}">Create New list</a>
+</tbody>
+</table>
+
+{%endif%}
